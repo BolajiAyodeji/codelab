@@ -114,7 +114,7 @@
             <div class="section-content">
               <span class="mdl-chip mdl-chip--contact">
                 <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">L</span>
-                <span class="mdl-chip__text">Last updated on 02/11/18</span>
+                <span class="mdl-chip__text">Last updated on 03/11/18</span>
               </span>
               <span class="mdl-chip mdl-chip--contact">
                 <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">P</span>
@@ -124,18 +124,18 @@
                 We are going to convert a basic static site into a Progressive Web App. Make sure to follow all the
                 steps as
                 documented later below.<br />
-                Click <a href="https://github.com/BolajiAyodeji/day-of-birth-finder" target="_blank">here</a> to
+                Click <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork" target="_blank">here</a> to
                 download the project template <br />
                 <b>Unzip</b> the downloaded file
                 to your prefered location after <b>download.</b> <br />
-                If you are using <b>Github Desktop,</b> simply <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork">Fork</a>
-                and <a href="https://github.com/BolajiAyodeji/day-of-birth-finder" target="_blank">clone</a> it.
+                If you are using <b>Github Desktop,</b> simply <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork/fork">Fork</a>
+                and <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork" target="_blank">clone</a> it.
                 <br />
                 If you're using Git, --git clone the repository.
               </p>
 
               <div class="download-button-container">
-                <a href="https://github.com/BolajiAyodeji/day-of-birth-finder">
+                <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork">
                   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     Download Project Template
                   </button>
@@ -212,7 +212,7 @@
                         Pretty cool right? 😀 <br />
                         We are going to convert this web app into a Progressive Web App and test it using the PWAFire Checklist
                     <div class="download-button-container">
-                      <a href="https://github.com/BolajiAyodeji/day-of-birth-finder">
+                      <a href="https://github.com/BolajiAyodeji/day-of-birth-finder/fork">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                           Download the Demo Web App
                         </button>
@@ -335,64 +335,72 @@
                   </div>
                   <pre class="language-javascript">
                 <code>
-        // A project PWA Fire written. All writes reserved https://pwafire.org 2018.
-        // Author : Bolaji Ayodeji https://bolaji-ayodeji.firebaseapp.com
+                    // after a service worker is installed and the user navigates to a different page or
+                    // refreshes,the service worker will begin to receive fetch events
 
-        // after a service worker is installed and the user navigates to a different page or
-        // refreshes,the service worker will begin to receive fetch events
+                    self.addEventListener('fetch', function(event) {
+                      event.respondWith(
+                        caches.open('cache').then(function(cache) {
+                          return cache.match(event.request).then(function(response) {
+                            console.log('cache request: ' + event.request.url)
+                            var fetchPromise = fetch(event.request).then(
+                              function(networkResponse) {
+                                // if we got a response from the cache, update the cache
+                                console.log(
+                                  'fetch completed: ' + event.request.url,
+                                  networkResponse
+                                )
+                                if (networkResponse) {
+                                  console.debug(
+                                    'updated cached page: ' + event.request.url,
+                                    networkResponse
+                                  )
+                                  cache.put(event.request, networkResponse.clone())
+                                }
+                                return networkResponse
+                              },
+                              function(event) {
+                                // rejected promise - just ignore it, we're offline!
+                                console.log('Error in fetch()', event)
+                                event.waitUntil(
+                                  caches.open('cache').then(function(cache) {
+                                    // our cache is named *cache* in the caches.open() above
+                                    return cache.addAll([
+                                      //cache.addAll(), takes a list of URLs, then fetches them from the server
+                                      // and adds the response to the cache.
+                                      // add your entire site to the cache- as in the code below; for offline access
+                                      // If you have some build process for your site, perhaps that could
+                                      // generate the list of possible URLs that a user might load.
+                                      '/', // do not remove this
+                                      '/index.html', //default
+                                      '/index.html?homescreen=1', //default
+                                      '/?homescreen=1', //default
+                                      '/css/app.css', // configure as by your site ; just an example
+                                      '/img/logo.png', // choose images to keep offline; just an example
+                                      // Do not replace/delete/editmganifest.js path below
 
-self.addEventListener('fetch', function (event) {
-    event.respondWith(caches.open('cache').then(function (cache) {
-        return cache.match(event.request).then(function (response) {
-            console.log("cache request: " + event.request.url);
-            var fetchPromise = fetch(event.request).then(function (networkResponse) {
-                // if we got a response from the cache, update the cache
-                console.log("fetch completed: " + event.request.url, networkResponse);
-                if (networkResponse) {
-                    console.debug("updated cached page: " + event.request.url, networkResponse);
-                    cache.put(event.request, networkResponse.clone());
-                }
-                return networkResponse;
-            }, function (event) {
-                // rejected promise - just ignore it, we're offline!
-                console.log("Error in fetch()", event);
-                event.waitUntil(
-                    caches.open('cache').then(function (cache) {
-                        // our cache is named *cache* in the caches.open() above
-                        return cache.addAll([
-                            //cache.addAll(), takes a list of URLs, then fetches them from the server
-                            // and adds the response to the cache.
-                            // add your entire site to the cache- as in the code below; for offline access
-                            // If you have some build process for your site, perhaps that could
-                            // generate the list of possible URLs that a user might load.
-                            //If you have more than one files or images that should load offline, add hem below
-                            '/', // do not remove this
-                            '/index.html', //default
-                            '/index.html?homescreen=1', //default
-                            '/?homescreen=1', //default
-                            '/css/main.css', // configure as by your site ; just an example
-                            '/img/logo.png', // choose images to keep offline; just an example
-                            // Do not replace/delete/editmganifest.js path below
-
-                            '/manifest.js',
-                            //These are links to the extenal social media buttons that should be cached;
-                            // we have used twitter's as an example
-                            'https://platform.twitter.com/widgets.js',
-                        ]);
+                                      '/manifest.js',
+                                      //These are links to the extenal social media buttons that should be cached;
+                                      // we have used twitter's as an example
+                                      'https://platform.twitter.com/widgets.js',
+                                    ])
+                                  })
+                                )
+                              }
+                            )
+                            // respond from the cache, or the network
+                            return response || fetchPromise
+                          })
+                        })
+                      )
                     })
-                );
-            });
-            // respond from the cache, or the network
-            return response || fetchPromise;
-        });
-    }));
-});
 
-self.addEventListener('install', function (event) {
-    // The promise that skipWaiting() returns can be safely ignored.
-    self.skipWaiting();
-    console.log("Latest version installed!");
-});
+                    self.addEventListener('install', function(event) {
+                      // The promise that skipWaiting() returns can be safely ignored.
+                      self.skipWaiting()
+                      console.log('Latest version installed!')
+                    })
+
 </code>
     <form class="codepen-button" action="https://codepen.io/mayeedwin/pen/eMOwry" method="POST" target="_blank"></form></pre>
                 </div>
@@ -659,6 +667,14 @@ self.addEventListener('install', function (event) {
               </div>
             </section>
 
+            <div class="download-button-container">
+                <a href="https://dob-finder.firebaseapp.com">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    View the Demo App
+                  </button>
+                </a>
+              </div>
+
           <section id="whats-next">
             <h3>What's next?</h3>
             <div class="section-content">
@@ -671,6 +687,11 @@ self.addEventListener('install', function (event) {
                 Are you still confused, got any questions? Contact Bolaji Ayodeji <br />
                 <a href="https://twier.com/iambolajiayo">Twitter</a> | <a href="https://facebook.com/iambolajiayo">Facebook</a> | <a href="mailto:sirbeejay1@gmail.com">Email</a>
               </p>
+
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                  <a href="">View the Demo App</a>
+                </button>
+
             </div>
           </section>
 
