@@ -421,7 +421,8 @@ self.addEventListener('install', function (event) {
                   name ( call it aything you want)</b>, the Web App name, <b>icons size</b> (icons in the icons folder
                 are already in the required sizes) and your <b>icon/logo</b> paths. We have to state the <b>img type</b>
                 eg image/ico or image/png. This is already done for you. You could use your own icons or logos and
-                update later after this codelab.
+                update later after this codelab. <br />
+                <b>PLEASE NOTE</b>: When using your own logos, ensure that the image has equal width and height preferably <b>(500px x 500px)</b>, sizes like 400px x 350px will result in <b>errors!</b>
               </p>
               <p>
                 Leave the <b>start url</b> as it is though this can be anything you want; the value we’re using has the
@@ -586,10 +587,14 @@ self.addEventListener('install', function (event) {
                 <p>1. Create a <b>GitHub account</b> at <a href="https://github.com/login" target="_blank">https://github.com/signup</a>.
                   Once your account has been created and you've signed in, you're ready to start!</p>
                 <P>2. Create a new <b>Repository</b> <a href="https://github.com/new" target="_blank">https://github.com/new</a> named username.github.io, where <b>username</b> is your username (or organization name) on <b>GitHub</b>.</p>
-                  <br />
+
                   If you created a repository with your username before, don't worry, just name the Repository anything, your project would still be hosted on the url <code>username.github.io/project-name</code> where <b>username</b> is your username (or organization name) on GitHub and <b>project-name</b> is the name of your project repository
                   <p>For this codelab, name the repository <code> DOB Finder </code>
-                <p>3. Upload your files to your repository</p>
+                    <p>3. Enable GitHub <b>Pages</b> <a href="https://github.com/repository-name/settings" target="_blank">https://github.com/repository-name/settings</a>, where <b>repository-name</b> is the name of your repository on <b>GitHub</b>.</p>
+
+                    <p>4. Scroll down to he GitHub Pages section,Click the <b>NONE</b> Dropdown buton, Select master branch, Click Save.
+
+                <p>5. Upload your files to your repository</p>
 
                 <div class="mdl-tabs mdl-js-tabs">
                     <div class="mdl-tabs__tab-bar">
@@ -622,7 +627,17 @@ self.addEventListener('install', function (event) {
                       </div>
                       <pre class="language-markup">
                         <p>Clone the Repository</p>
-                          <pre><code><span class="pln">--git clone https://github.com/username/username.github.io </span></code></pre> <br />
+                          <pre><code><span class="pln">$ git clone https://github.com/username/username.github.io </span></code></pre> <br />
+
+                          <p>Enter the Project folder</p>
+                          <pre><code><span class="pln">$ cd username.github.io </span></code></pre> <br />
+
+                          <p><b> Add your files to the cloned repository folder</b></p>
+
+                          <p>Add, Commit and Push your Changes</p>
+                          <pre><code><span class="pln"> $ git add -all </span></code></pre>
+                          <pre><code><span class="pln"> $ git commit -m "Initial commit" </span></code></pre>
+                          <pre><code><span class="pln"> $ git git push -u origin master </span></code></pre>
 
 
           <form class="codepen-button" action="https://pwafire.org/developer/pwa" method="POST" target="_blank"></form></pre>
@@ -635,7 +650,7 @@ self.addEventListener('install', function (event) {
               </div>
 
 
-            <p>4. Celebrate. You're done! Your app will be deployed to the domain:</p>
+            <p>6. Celebrate. You're done! Your app will be deployed to the domain:</p>
                 <pre><code><span class="pln">https://username.github.io.</span></code></pre>
                 <p>5. Visit your web app on your phone now. You should see an <b>"install to homescreen"</b> banner
                   prompt! Welcome to the new world!! Further reading: <a href="https://pages.github.com/" target="_blank">GitHub Pages Hosting Guide.</a></p>
@@ -648,10 +663,13 @@ self.addEventListener('install', function (event) {
             <h3>What's next?</h3>
             <div class="section-content">
               <p>
-                Donate a <a class="github-button" href="https://github.com/mayeedwin/offline-js"> Star </a> like,
-                follow and <a href="">contribute</a> in any way. Learn how to use
-                <b>firebase cloud firestore</b> in your realtime progressive web app <a href="../cloud-firestore-for-web/">in
-                  this codelab.</a>
+                Learn how to use
+                <b>firebase cloud firestore</b> in your realtime progressive web app <a href="../cloud-firestore-for-web/">in this codelab.</a> <br />
+                Check out the <b>Progressive Web Apps Checklist</b> <a href="https://pwafire.org/developer/docs/checklist/">in this codelab.</a> <br />
+                Learn how to use
+                <b>PWA</b> on Desktop <a href="https://pwafire.org/developer/docs/how-to-install-desktop-pwa/">in this codelab.</a> <br />
+                Are you still confused, got any questions? Contact Bolaji Ayodeji <br />
+                <a href="https://twier.com/iambolajiayo">Twitter</a> | <a href="https://facebook.com/iambolajiayo">Facebook</a> | <a href="mailto:sirbeejay1@gmail.com">Email</a>
               </p>
             </div>
           </section>
