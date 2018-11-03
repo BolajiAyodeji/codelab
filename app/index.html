@@ -17,8 +17,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire</title>
-  <meta name="description" content="In this codelab we are going to build a Progressive Web App. Make sure to follow all the steps as documented.">
+  <title>PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire and Deploy to Firebase and GitHub Pages and Deploy to Firebase and GitHub Pages</title>
+  <meta name="description" content="In this codelab we are going to build a Progressive Web App and Deploy it to Firebase and GitHub Pages. Make sure to follow all the steps as documented.">
   <meta name="twitter:image" content="https://pwafire.org/images/pwafire-apps.jpg">
   <!-- web manifest -->
   <link rel="manifest" href="https://pwafire.org/manifest.json">
@@ -35,10 +35,10 @@
   <meta name="theme-color" content="#fff">
   <link rel="shortcut icon" sizes="32x32" href="https://pwafire.org/images/pwafire32white.png">
   <!-- codelab sharing meta data -->
-  <meta property="og:title" content="PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire">
-  <meta property="og:site_name" content="PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire">
+  <meta property="og:title" content="PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire and Deploy to Firebase and GitHub Pages">
+  <meta property="og:site_name" content="PWA Fire Codelabs - How to build Progressive Web Apps with PWAFire and Deploy to Firebase and GitHub Pages">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="In this codelab we are going to build a Progressive Web App. Make sure to follow all the steps as documented.">
+  <meta property="og:description" content="In this codelab we are going to build a Progressive Web App and Deploy it to Firebase and GitHub Pages. Make sure to follow all the steps as documented.">
   <meta property="og:image" content="https://pwafire.org/images/pwafire-apps.jpg">
   <meta property="og:image:type" content="image/png" />
   <meta name="theme-color" content="#fff">
@@ -91,19 +91,20 @@
             <h3>Codelab Flow</h3>
             <nav class="section-content">
               <ul>
-                <li><a href="#codelab">Codelab Aim</a></li>
-                <li><a href="#what-is-pwa">What are Progressive Web Apps?</a></li>
-                <li><a href="#why-pwa">Why should you use them?</a></li>
-                <li><a href="#what-is-pwafire">What is PWAFire?</a></li>
-                <li><a href="#download-dp">Download Demo Project</a></li>
-                <li><a href="#s-sw">Setup Service Worker</a></li>
-                <li><a href="#config-sw">Configure Service Worker</a></li>
-                <li><a href="#config-wm">Setup Web Manifest</a></li>
-                <li><a href="#config-wm">Configure Web Manifest</a></li>
-                <li><a href="#firebase-hosting">Firebase Hosting</a></li>
-                <li><a href="#github-hosting">GitHub Pages Hosting</a></li>
-                <li><a href="#whats-next">Whats next</a></li>
-                <li><a href="#license">License</a></li>
+                  <li><a href="#codelab">Codelab Aim</a></li>
+                  <li><a href="#what-is-pwa">What are Progressive Web Apps?</a></li>
+                  <li><a href="#why-pwa">Why should you use them?</a></li>
+                  <li><a href="#what-is-pwafire">What is PWAFire?</a></li>
+                  <li><a href="#download-dp">Download Demo Project</a></li>
+                  <li><a href="#starter-guide">Starter guide</a></li>
+                  <li><a href="#s-sw">Setup Service Worker</a></li>
+                  <li><a href="#s-wm">Setup Web Manifest</a></li>
+                  <li><a href="#config-sw">Configure Service Worker</a></li>
+                  <li><a href="#config-wm">Configure Web Manifest</a></li>
+                  <li><a href="#firebase-hosting">Firebase Hosting</a></li>
+                  <li><a href="#github-hosting">GitHub Pages Hosting</a></li>
+                  <li><a href="#whats-next">Whats next</a></li>
+                  <li><a href="#license">License</a></li>
               </ul>
             </nav>
           </section>
@@ -202,16 +203,43 @@
                 </div>
               </section>
 
+              <section id="download-dp">
+                  <h3>Download Demo Project</h3>
+                  <div class="section-content">
+                    <p>
+                        This project is a basic app built with HTML, CSS, BOOTSTRAP AND JAVASCRIPT <br />
+                        The App checks your Date of Birth and detects the Day of the Week you were born. <br />
+                        Pretty cool right? 😀 <br />
+                        We are going to convert this web app into a Progressive Web App and test it using the PWAFire Checklist
+                    <div class="download-button-container">
+                      <a href="https://github.com/BolajiAyodeji/day-of-birth-finder">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                          Download the Demo Web App
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </section>
+
+                <section id="starter-guide">
+                    <h3>Starter Guide</h3>
+                    <div class="section-content">
+                      <p>
+                          In your root folder, create two empty files; <code>service-worker.js</code> and <code>manifest.json</code> and save. Once done; let's proceed down here;
+                    </div>
+                  </section>
 
 
-          <section id="sw-register">
-            <h3>Code to register the service worker</h3>
+
+          <section id="s-sw">
+            <h3>Setup Service Worker</h3>
             <div class="section-content">
 
               <p>This is the first step to making our web app work offline. Copy and paste this code to the <b>index
                   file</b> just before the end of the body tag or in the head tag.</p>
               <p><b>N/B : YOU NEED HTTPS</b> : We are going to use <a href="https://firebase.google.com/docs/hosting/deploying#section-hosting-setup"
-                  target="_blank">Firebase Hosting</a> later which shall have <b>HTTPS</b> already provisioned for our
+                  target="_blank">Firebase Hosting</a> and <a href="https://pages.github.com/"
+                  target="_blank">Github Pages</a> later which shall have <b>HTTPS</b> already provisioned for our
                 project.</p>
 
               <div class="mdl-tabs mdl-js-tabs">
@@ -264,8 +292,8 @@
 
           </section>
 
-          <section id="use-web-manifest">
-            <h3>Using the web manifest</h3>
+          <section id="s-wm">
+            <h3>Setup Web Manifest</h3>
             <div class="section-content">
               <p>
                 We are going to add a link tag to all the pages that encompass our web app inside the head tag, as
@@ -278,8 +306,8 @@
             </div>
           </section>
 
-          <section id="sw-config">
-            <h3>Service Worker // service-worker.js config</h3>
+          <section id="config-sw">
+            <h3>Configure Service Worker // service-worker.js</h3>
             <div class="section-content">
               <p>
                 <b>NOTE</b> : The important thing to understand about the <b>Service Worker</b> is that you are in
@@ -296,9 +324,7 @@
 
                 <div class="mdl-tabs__panel is-active" id="tab4">
                   <div class="code-with-text">
-                    A service worker is a script that your browser runs in the background, separate from a web page,
-                    opening the door to features that don't need a web page or user interaction i.e offline
-                    capabilities, push nitification, add to homescreen, sharable etc
+                    A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction. Today, they already include features like push notifications and background sync. In the future, service workers might support other things like periodic sync or geofencing.
                   </div>
 
                 </div>
@@ -310,56 +336,64 @@
                   <pre class="language-javascript">
                 <code>
         // A project PWA Fire written. All writes reserved https://pwafire.org 2018.
-        // Author : Maye Edwin https://maye.gdgmoi.com
+        // Author : Bolaji Ayodeji https://bolaji-ayodeji.firebaseapp.com
 
         // after a service worker is installed and the user navigates to a different page or
         // refreshes,the service worker will begin to receive fetch events
 
-        self.addEventListener('fetch', function(event) {
-        event.respondWith(caches.open('cache').then(function(cache) {
-        return cache.match(event.request).then(function(response) {
-        console.log("cache request: " + event.request.url);
-        var fetchPromise = fetch(event.request).then(function(networkResponse) {
-        // if we got a response from the cache, update the cache
-        console.log("fetch completed: " + event.request.url, networkResponse);
-        if (networkResponse) {
-            console.debug("updated cached page: " + event.request.url, networkResponse);
-              cache.put(event.request, networkResponse.clone());}
-              return networkResponse;
-                  }, function (event) {
-        // rejected promise - just ignore it, we're offline!
-                  console.log("Error in fetch()", event);
-                  event.waitUntil(
-                  caches.open('cache').then(function(cache) {
-        // our cache is named *cache* in the caches.open() above
-                  return cache.addAll
-                  ([
-        //cache.addAll(), takes a list of URLs, then fetches them from the server
-        // and adds the response to the cache.
-        // add your entire site to the cache- as in the code below; for offline access
-        // If you have some build process for your site, perhaps that could
-        // generate the list of possible URLs that a user might load.
-                '/', // do not remove this
-                '/index.html', //default
-                '/index.html?homescreen=1', //default
-                '/?homescreen=1', //default
-                '/assets/css/main.css',// configure as by your site ; just an example
-                '/images/*',// choose images to keep offline; just an example
-        // Do not replace/delete/edit the service-worker.js/ and manifest.js paths below
-                '/service-worker.js',
-                '/manifest.js',
-        //These are links to the extenal social media buttons that should be cached;
-        // we have used twitter's as an example
-              'https://platform.twitter.com/widgets.js',
-                ]);
-                })
+self.addEventListener('fetch', function (event) {
+    event.respondWith(caches.open('cache').then(function (cache) {
+        return cache.match(event.request).then(function (response) {
+            console.log("cache request: " + event.request.url);
+            var fetchPromise = fetch(event.request).then(function (networkResponse) {
+                // if we got a response from the cache, update the cache
+                console.log("fetch completed: " + event.request.url, networkResponse);
+                if (networkResponse) {
+                    console.debug("updated cached page: " + event.request.url, networkResponse);
+                    cache.put(event.request, networkResponse.clone());
+                }
+                return networkResponse;
+            }, function (event) {
+                // rejected promise - just ignore it, we're offline!
+                console.log("Error in fetch()", event);
+                event.waitUntil(
+                    caches.open('cache').then(function (cache) {
+                        // our cache is named *cache* in the caches.open() above
+                        return cache.addAll([
+                            //cache.addAll(), takes a list of URLs, then fetches them from the server
+                            // and adds the response to the cache.
+                            // add your entire site to the cache- as in the code below; for offline access
+                            // If you have some build process for your site, perhaps that could
+                            // generate the list of possible URLs that a user might load.
+                            //If you have more than one files or images that should load offline, add hem below
+                            '/', // do not remove this
+                            '/index.html', //default
+                            '/index.html?homescreen=1', //default
+                            '/?homescreen=1', //default
+                            '/css/main.css', // configure as by your site ; just an example
+                            '/img/logo.png', // choose images to keep offline; just an example
+                            // Do not replace/delete/editmganifest.js path below
+
+                            '/manifest.js',
+                            //These are links to the extenal social media buttons that should be cached;
+                            // we have used twitter's as an example
+                            'https://platform.twitter.com/widgets.js',
+                        ]);
+                    })
                 );
-                });
-        // respond from the cache, or the network
-          return response || fetchPromise;
+            });
+            // respond from the cache, or the network
+            return response || fetchPromise;
         });
-        }));
-        });</code>
+    }));
+});
+
+self.addEventListener('install', function (event) {
+    // The promise that skipWaiting() returns can be safely ignored.
+    self.skipWaiting();
+    console.log("Latest version installed!");
+});
+</code>
     <form class="codepen-button" action="https://codepen.io/mayeedwin/pen/eMOwry" method="POST" target="_blank"></form></pre>
                 </div>
 
@@ -378,10 +412,11 @@
 
             </div>
           </section>
-          <section id="web-manifest-config">
-            <h3>Web Manifest // manifest.json config</h3>
+          <section id="config-wm">
+            <h3>Configure Web Manifest // manifest.json</h3>
             <div class="section-content">
               <p>
+                  Configuring the manifest.json file helps you to specify how you want your web app to look like when launched on the device. <br />
                 Configure/edit the <b>background</b> and <b>theme colors</b>, <b>display type</b>, the <b>Web App short
                   name ( call it aything you want)</b>, the Web App name, <b>icons size</b> (icons in the icons folder
                 are already in the required sizes) and your <b>icon/logo</b> paths. We have to state the <b>img type</b>
@@ -392,6 +427,19 @@
                 Leave the <b>start url</b> as it is though this can be anything you want; the value we’re using has the
                 advantage of being meaningful to Google Analytics.
               </p>
+
+              <p>You can also use the Web Manifest Generator for faster and easier manifest <br />
+                 All you need to do is fill the form with your prefferred settings and upload your app icon (preferably 500px X 500px) and it generates the JSON file and all the sizes of icons you need in a zip file.
+              </p>
+
+              <div class="download-button-container">
+                  <a href="https://app-manifest.firebaseapp.com/" target="_blank">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                      Use the Web Manifest Generator
+                    </button>
+                  </a>
+                </div>
+
               <div class="mdl-tabs mdl-js-tabs">
                 <div class="mdl-tabs__tab-bar">
                   <a href="#tab4" class="mdl-tabs__tab is-active">Description</a>
@@ -404,9 +452,11 @@
                   <div class="code-with-text">
 
                     Configuring the <b>manifest.json</b> file helps you to specify how you want your web app to look
-                    like when launched on the device.
+                    like when launched on the device. <br />
+                    It is a JSON document that provides application metadata for Progressive Web Apps.
                   </div>
                 </div>
+
 
 
                 <div class="mdl-tabs__panel" id="tab5">
@@ -419,48 +469,48 @@
           "display": "standalone",
           "orientation":"portrait",
           "theme_color": "#fff",
-          "short_name": "PWA Fire",
-          "name": "PWA Fire",
+          "short_name": "DOB Finder",
+          "name": "Date of Birth Finder",
           "description": "description or purpose of your progressive web app",
           "lang": "en-US",
           "icons": [
           {
-            "src": "images/icons/icon-72x72.png",
+            "src": "img/icons/icon-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-96x96.png",
+            "src": "img/icons/icon-96x96.png",
             "sizes": "96x96",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-128x128.png",
+            "src": "img/icons/icon-128x128.png",
             "sizes": "128x128",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-144x144.png",
+            "src": "img/icons/icon-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-152x152.png",
+            "src": "img/icons/icon-152x152.png",
             "sizes": "152x152",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-192x192.png",
+            "src": "img/icons/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-384x384.png",
+            "src": "img/icons/icon-384x384.png",
             "sizes": "384x384",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-512x512.png",
+            "src": "img/icons/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
           }
@@ -500,6 +550,8 @@
               <p>1. Create a <b>Firebase account</b> at <a href="https://firebase.google.com/console/" target="_blank">https://firebase.google.com/console/</a>.
                 Once your account has been created and you've signed in, you're ready to deploy!</p>
               <P>2. Create a new Firebase app at <a href="https://firebase.google.com/console/" target="_blank">https://firebase.google.com/console/</a></p>
+                <br />
+                <p>For this codelab, name the project <code> DOB Finder </code> and take note of the Project ID
               <p>3. Install the <b>Firebase tools</b> via npm (run this in your command line).The Firebase Command Line
                 Interface (CLI) will allow you to serve the web app locally and deploy.</p>
               <pre><code><span class="pln">npm </span><span class="pun">-</span><span class="pln">g install firebase</span><span class="pun">-</span><span class="pln">tools</span></code></pre>
@@ -507,8 +559,9 @@
               <pre><code><span class="pln">firebase </span><span class="pun">--</span><span class="pln">version</span></code></pre>
               <P>5. If you haven't recently signed in to the Firebase tools, update your credentials:</P>
               <pre><code><span class="pln">firebase login</span></code></pre>
-              <p>6. Make sure you are in the <code>PWA Fire Profile</code> directory then Initialize your app to use
-                Firebase. Select your Project ID and follow the instructions.</p>
+              <p>6. Make sure you are in the <code>Date of Birth Finder</code> directory <br />
+                <code> cd Date-of-Birth-Finder </code> to switch to the directory then Initialize your app to use
+                Firebase. <br /> Select your Project ID and follow the instructions.</p>
               <p>When prompted, you can choose any Alias, such as <code>pwafire</code> for instance. Select <b>Firebase
                   Hosting</b> as the Firebase CLI feature. Provide the default directory as <code>/</code>. To the
                 other prompts, reply NO; <code>N</code></p>
@@ -518,18 +571,78 @@
               <p>9. Celebrate. You're done! Your app will be deployed to the domain:</p>
               <pre><code><span class="pln">https://YOUR-FIREBASE-APP.firebaseapp.com</span></code></pre>
               <p>10. Visit your web app on your phone now. You should see an <b>"install to homescreen"</b> banner
-                prompt! Welcome to <a href="https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/"
-                  target="_blank">Canaan!</a> Further reading: <a href="https://firebase.google.com/console/" target="_blank">Firebase
+                prompt! Welcome to the new world!! Further reading: <a href="https://firebase.google.com/console/" target="_blank">Firebase
                   Hosting Guide.</a></p>
               <p><img src="https://pwafire.org/developer/images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance">
                 <img src="https://pwafire.org/developer/images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance"></p>
             </div>
-            <div class="download-button-container">
-              <a href="https://pwafire-codelab.firebaseapp.com/" target="_blank">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Launch Demo App</button>
-              </a>
-            </div>
           </section>
+
+          <section id="github-hosting">
+              <h3>Github Pages Hosting</h3>
+              <div class="section-content">
+                <p>If you're new to <a href="https://github.com/" target="_blank">GitHub</a>, you'll need to
+                  create your account and create a repository first.</p>
+                <p>1. Create a <b>GitHub account</b> at <a href="https://github.com/login" target="_blank">https://github.com/signup</a>.
+                  Once your account has been created and you've signed in, you're ready to start!</p>
+                <P>2. Create a new <b>Repository</b> <a href="https://github.com/new" target="_blank">https://github.com/new</a> named username.github.io, where <b>username</b> is your username (or organization name) on <b>GitHub</b>.</p>
+                  <br />
+                  If you created a repository with your username before, don't worry, just name the Repository anything, your project would still be hosted on the url <code>username.github.io/project-name</code> where <b>username</b> is your username (or organization name) on GitHub and <b>project-name</b> is the name of your project repository
+                  <p>For this codelab, name the repository <code> DOB Finder </code>
+                <p>3. Upload your files to your repository</p>
+
+                <div class="mdl-tabs mdl-js-tabs">
+                    <div class="mdl-tabs__tab-bar">
+                      <a href="#tab1" class="mdl-tabs__tab">GitHub Desktop</a>
+                      <a href="#tab2" class="mdl-tabs__tab is-active">Git</a>
+                      <a href="#tab3" class="mdl-tabs__tab">Upload Files on GitHub</a>
+
+                    </div>
+
+                    <div class="mdl-tabs__panel" id="tab1">
+                      <div class="code-with-text">
+                      <a href="https://desktop.github.com/" target="_blank"> Download GitHub Desktop</a> <br /><br />
+
+                        <b>Clone the repository</b> <br />
+                    Click the "Set up in Desktop" button. When the GitHub desktop app opens, save the project.
+
+                    If the app doesn't open, launch it and clone the repository from the app. <br /><br />
+                    <b>Add your files to the cloned repository</b> <br /><br />
+
+                    <b>Commit & publish</b> <br />
+                    Return to the GitHub Desktop app, Enter the repository, commit your changes, and press the publish button.
+
+                        </div>
+                      </div>
+
+
+                    <div class="mdl-tabs__panel is-active" id="tab2">
+                      <div class="code-with-text">
+                      Using Git Terminal. <a href="https://git-scm.com/downloads" target="_blank">Download here</a>
+                      </div>
+                      <pre class="language-markup">
+                        <p>Clone the Repository</p>
+                          <pre><code><span class="pln">--git clone https://github.com/username/username.github.io </span></code></pre> <br />
+
+
+          <form class="codepen-button" action="https://pwafire.org/developer/pwa" method="POST" target="_blank"></form></pre>
+                    </div>
+
+                    <div class="mdl-tabs__panel" id="tab3">
+                        <div class="code-with-text">
+                          Click the <b>Upload files</b> button or simply Drag and Drop your files to upload them to yor repository.
+                      </div>
+              </div>
+
+
+            <p>4. Celebrate. You're done! Your app will be deployed to the domain:</p>
+                <pre><code><span class="pln">https://username.github.io.</span></code></pre>
+                <p>5. Visit your web app on your phone now. You should see an <b>"install to homescreen"</b> banner
+                  prompt! Welcome to the new world!! Further reading: <a href="https://pages.github.com/" target="_blank">GitHub Pages Hosting Guide.</a></p>
+                <p><img src="https://pwafire.org/developer/images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance">
+                  <img src="https://pwafire.org/developer/images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance"></p>
+              </div>
+            </section>
 
           <section id="whats-next">
             <h3>What's next?</h3>
